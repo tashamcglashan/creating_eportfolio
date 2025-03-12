@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 h1, h2, h3, h4, h5, h6, span{
 color:#242424;
 text-align: center;
@@ -20,6 +24,36 @@ h1{
 p{
     line-height: 1.5;
     font-size: 16px;
+}
+
+a {
+   text-decoration: none; 
+   position:relative;
+
+}
+
+.link__hover-effect:after{
+content: "";
+position: absolute;
+height:3px;
+width: 0;
+bottom: -3px;
+right:0;
+transition: all 300ms ease;
+}
+
+.link__hover-effect--white:after{
+    background-color: #fff;
+}
+
+
+.link__hover-effect--black:after{
+    background-color: #000;
+}
+
+.link__hover-effect:hover:after{
+width: 100%;
+left: 0;
 }
 
 li{
@@ -69,6 +103,7 @@ margin: 0 auto;
 display: flex;
 justify-content: space-between;
 align-items: center;
+padding:0 12px;
 }
 
 .nav__link--list{
@@ -79,7 +114,6 @@ align-items: center;
 .nav__link--anchor{
     margin: 0 12px;
     color:#242424;
-    text-decoration: none;
     font-weight: 700;
 }
 
@@ -158,7 +192,6 @@ can't get transform or padding-top to appear*/
 .about-me__link{
 font-size: 20px;
 color: #242424;
-text-decoration: none;
 padding: 0 16px;
 }
 
@@ -203,7 +236,8 @@ padding: 0 16px;
 }
 
 .language__list{
-   display: flex; 
+   display: flex;
+   justify-content: center; 
    width: 100%;
    flex-wrap: wrap;
 }
@@ -223,6 +257,14 @@ padding: 0 16px;
 }
 
 /*PROJECTS*/    
+
+.project{
+  margin-bottom: 135px;  
+}
+
+.project:last-child{
+    margin-bottom: 40px;
+}
 
 .project__img{
     width: 100%;
@@ -262,6 +304,7 @@ padding: 0 16px;
 
 .project:hover .project__description{
     opacity: 1;
+    transform: translateY(-50%)
 }
 
 .project__list{
@@ -272,11 +315,11 @@ padding: 0 16px;
 position: absolute;
 top: 50%;
 left: 90px;
-transform: translateY(-50);
+transform: translateY(100%);
 max-width: 550px;
 z-index: 3;
 opacity:0 ;
-transition: transform 450ms, opacity 300ms;
+transition: transform 450ms,  opacity 300ms;
 }
 
 .project__description--title{
@@ -290,7 +333,6 @@ transition: transform 450ms, opacity 300ms;
 .project__description--link{
     font-size: 20px;
     margin-right: 16px;
-    text-decoration: none;
 }
 
 .project__description--title, 
@@ -299,4 +341,94 @@ transition: transform 450ms, opacity 300ms;
 .project__description--link {
     text-align: left;
     color:#ffff;
+}
+
+/*FOOTER*/
+
+footer{
+    background-color: #242424;
+}
+
+.footer__social--list{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 28px;
+   
+    
+}
+
+.footer__logo--img{
+width: 70px;
+height: 70px;
+}
+
+.footer__row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   padding: 8% 0; 
+}
+
+.footer__social--link,
+.footer__copyright,
+.footer__logo--popper {
+color:#ffff
+}
+
+.footer__logo--popper{
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 300ms ease;
+}
+
+.footer__anchor{
+    margin-bottom: 20px;  
+   position: relative; 
+}
+
+.footer__anchor:hover .footer__logo--popper{
+transform: translateX(60px);
+opacity: 1;
+}
+
+/*use for small phones, tablets, large smartphones*/
+
+@media (max-width: 768px){
+    nav {
+        height: 68px;
+    }
+
+    h1{
+     font-size: 28px;   
+    }
+
+    .about-me__info--para{
+      font-size: 19px;  
+    }
+
+    .language {
+        width: calc(100% / 2);
+    }
+
+    .project__description--para{
+       font-size: 14px; 
+    }
+
+    .project__description{
+        padding-right: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+@media (max-width: 480px){
+    .nav__link:not(:last-child){
+        display: none;
+    }
 }
